@@ -1,0 +1,42 @@
+Assignment-4_Session-6
+
+Problem Statement:
+
+Use the given link Data Set.
+
+Answer the following questions:
+
+a. What are the assumptions of ANOVA, test it out?
+Answer-
+# The Assumptions of ANOVA test is as mentioned below with the test performed:
+
+# 1. Errors are independent :- The sample sizes need not be the same, though it’s best if they’re not very different.
+
+# 2. Errors(residual) are normally distributed.
+
+# 3. Variances are homogeneous.
+
+# 4. Models effects are addictive.
+
+qqnorm(nuc)
+qqline(nuc)
+
+# Bartlett Test of Homogeneity of Variances
+bartlett.test(nuc~Target_V, data=yeast_data)
+
+# Figner-Killeen Test of Homogeneity of Variances
+fligner.test(nuc~Target_V, data=yeast_data)
+
+# Homogeneity of Variance Plot
+library(HH)
+hov(nuc~Target_V, data=yeast_data)
+hovPlot(nuc~Target_V, data=yeast_data, str = 90, las = 3)
+
+b. Why ANOVA test? Is there any other way to answer the above question?
+Answer-
+The one-way ANOVA compares the means between the groups you are interested in and determines 
+whether any of those means are statistically significantly different from each other. 
+Specifically, it tests the null hypothesis:
+
+Friedman's Test is a fairly standard non-parametric statistic that's analogous to a repeated 
+measures ANOVA. If null hypothesis is rejected, friedmanmc() function does post hoc analysis.
